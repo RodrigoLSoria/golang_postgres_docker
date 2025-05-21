@@ -25,5 +25,11 @@ reset:
 	make createdb
 	make migrateup
 
-.PHONY: postgres createdb dropdb migrateup migratedown sqlc reset
+test:
+	go test -v -cover -short ./...
+
+server:
+	go run main.go
+
+.PHONY: postgres createdb dropdb migrateup migratedown sqlc reset test server
 	
