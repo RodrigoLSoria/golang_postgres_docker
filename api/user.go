@@ -44,6 +44,7 @@ func (server *Server) createUser(ctx *gin.Context) {
 		FullName:       req.FullName,
 		Email:          req.Email,
 	}
+	arg = db.CreateUsersParams{}
 
 	user, err := server.store.CreateUsers(ctx, arg)
 	if err != nil {
@@ -66,5 +67,5 @@ func (server *Server) createUser(ctx *gin.Context) {
 		CreatedAt:         user.CreatedAt,
 	}
 
-	ctx.JSON(http.StatusOK, user)
+	ctx.JSON(http.StatusOK, rsp)
 }
